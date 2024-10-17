@@ -18,6 +18,7 @@ class CategoryRepository
 
     public function create(array $data)
     {
+       
         return Category::create($data);
     }
 
@@ -32,6 +33,9 @@ class CategoryRepository
     public function delete($id)
     {
         $category = $this->findById($id);
-        return $category->delete();
+            $category->active = !$category->active; 
+            $category->save();
+    
+            return $category;
     }
 }

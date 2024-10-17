@@ -3721,7 +3721,19 @@ fieldset:disabled .btn {
   --bs-btn-disabled-bg: #cb0c9f;
   --bs-btn-disabled-border-color: #cb0c9f;
 }
-
+#btn-bar {
+  background-image: linear-gradient(310deg, #141727 0%, #3A416F 100%);
+  color: #fff;
+  border-radius: 4px;
+  padding: 9px 19px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 11px;
+  opacity: .95;
+  /* margin-right: 20px; */
+  box-shadow: 0 5px 10px -3px rgba(0, 0, 0, .23), 0 6px 10px -5px rgba(0, 0, 0, .25);
+}
 .btn-secondary {
   --bs-btn-color: #000;
   --bs-btn-bg: #8392AB;
