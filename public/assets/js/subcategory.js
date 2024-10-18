@@ -26,12 +26,13 @@ $(document).ready(function() {
         
         $('#subCategoriesTable').on('click', '.edit-subCategory', function() {
             var $row = $(this).closest('tr'); // Get the closest <tr> for this button
-    
+            
             // Retrieve data from the <tr>
             var title = $row.find('td:eq(0) p').text(); // Title in first <td>
             var description = $row.find('td:eq(1) p').text(); // Description in second <td>
             var id = $(this).data('id');
-    
+            
+            console.log($id);
             // Fill the modal inputs
             $('#title').val(title);
             $('#des').val(description);
@@ -54,7 +55,8 @@ $(document).ready(function() {
             var id = $('#modalSubCat').data('category-id');
     
             // Determine whether to create or update
-            var url = id ? '/categories/' + id : '/categories';
+            var url = id ? '/subCategories/' + id : '/subCategories';
+   
     
     
             // Perform AJAX request
@@ -81,12 +83,13 @@ $(document).ready(function() {
         
             $('#subCategoriesTable').on('click', '.delete-subCategory', function() {
             var id = $(this).data('id');
+    console.log(id);
     
             var button = $(this);
             if (confirm('Are you sure you want to ' + (button.text().trim() === 'Deactivate' ?
                     'deactivate' : 'activate') + ' this category?')) {
                 $.ajax({
-                    url: '/categories/' + id,
+                    url: '/subCategories/delete/' + id,
                     type: 'post',
                     data: {
                         _token: $('meta[name="csrf-token"]').attr('content')

@@ -23,9 +23,8 @@ Route::post('/categories/delete/{id}', [CategoryController::class, 'destroy'])->
 
 
 Route::get('/subCategories', [SubCategoryController::class, 'index'])->name('subCategory.index');
-Route::post('/subCategories', [SubCategoryController::class, 'store'])->name('subCategories.store');
-Route::get('/subCategories/{id}', [SubCategoryController::class, 'edit'])->name('subCategories.edit');
-Route::post('/subCategories/{id}', [SubCategoryController::class, 'update'])->name('subCategories.update');
-Route::post('/subCategories/{id}', [SubCategoryController::class, 'destroy'])->name('subCategories.destroy');
-// Route::get('/getCategory', [SubCategoryController::class, 'getCategory'])->name('subCategories.getCategory');
+Route::post('/subCategories', [SubCategoryController::class, 'store'])->name('subCategory.store');
+Route::get('/subCategories/{id}', [SubCategoryController::class, 'edit'])->name('subCategory.edit');
+Route::post('/subCategories/{id}', [SubCategoryController::class, 'update'])->name('subCategory.update');
+Route::post('/subCategories/delete/{id}', [SubCategoryController::class, 'destroy'])->name('subCategory.destroy');
 

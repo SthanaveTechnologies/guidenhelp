@@ -28,7 +28,7 @@ class SubCategoryController extends Controller
 
             return DataTables::of($subCategories)
                 ->addColumn('status', function ($subCategory) {
-                    return $subCategory->active ? 'Active' : 'Inactive';
+                    return '<span class="badge badge-sm ' . ($subCategory->active ? 'bg-gradient-success' : 'bg-gradient-secondary') . '">' . ($subCategory->active ? 'Active' : 'Inactive') . '</span>';
                 })
                 ->addColumn('actions', function ($subCategory) {
                     $editButton = '<a href="javascript:void(0)" class="text-secondary badge bg-gradient-primary text-white font-weight-bold text-xs edit-subCategory" data-id="' . $subCategory->id . '"  data-bs-toggle="modal"
@@ -36,7 +36,7 @@ class SubCategoryController extends Controller
                     $toggleStatusButton = '<a href="javascript:void(0)" class="text-secondary badge bg-gradient-danger text-white font-weight-bold text-xs delete-subCategory" data-id="' . $subCategory->id . '">' . ($subCategory->active ? 'Deactivate' : 'Activate') . '</a>';
                     return $editButton . ' ' . $toggleStatusButton;
                 })
-                ->rawColumns(['actions'])
+                ->rawColumns(['status','actions'])
                 ->make(true);
             }
 

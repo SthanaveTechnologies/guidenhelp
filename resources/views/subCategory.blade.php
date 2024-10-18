@@ -67,17 +67,17 @@
                                 </div>
                             </div>
 
-                            <div class="form-group mb-4">
+                            {{-- <div class="form-group mb-4">
                                 <label for="category">Select Category</label>
                                 <div class="input-group">
                                     <select id="category" class="form-control border-gray-300" required>
                                         <option value="" disabled selected>Select a category</option>
-                                        {{-- @foreach($categories as $category) <!-- Assuming you have categories available -->
+                                        @foreach($categories as $category) <!-- Assuming you have categories available -->
                                             <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                        @endforeach --}}
+                                        @endforeach
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- End of Form -->
                             <div class="form-group">
                                 <!-- Form -->
