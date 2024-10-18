@@ -94,4 +94,16 @@ class CategoryController extends Controller
         ], 400); 
     }
     }
+
+
+    public function storeEditor(Request $request)
+    {
+        $content = $request->input('content');
+        dd($content);
+        // Save the content to the database, or perform other actions
+        // Example: YourModel::create(['content' => $content]);
+
+        return back()->with('success', 'Content saved successfully!');
+    }
+
 }
