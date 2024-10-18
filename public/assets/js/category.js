@@ -1,5 +1,5 @@
 $(document).ready(function() {
-console.log("rjoer");
+
 
     $('#categoriesTable').DataTable({
         
@@ -24,12 +24,12 @@ console.log("rjoer");
         ]
     });
 
-    $('.edit-category').on('click', function() {
+    $('#categoriesTable').on('click', '.edit-category', function() {
         var $row = $(this).closest('tr'); // Get the closest <tr> for this button
 
         // Retrieve data from the <tr>
-        var title = $row.find('td:eq(0) p').text(); // Title in first <td>
-        var description = $row.find('td:eq(1) p').text(); // Description in second <td>
+        var title = $row.find('td:eq(0)').text(); // Title in first <td>
+        var description = $row.find('td:eq(1)').text(); // Description in second <td>
         var id = $(this).data('id');
 
         // Fill the modal inputs
@@ -39,6 +39,7 @@ console.log("rjoer");
         // Optionally store the ID for use in an update
         $('#modalCat').data('category-id', id);
     });
+
 
     // Reset the form when the modal is hidden
     $('#modalCat').on('hide.bs.modal', function() {
@@ -55,7 +56,6 @@ console.log("rjoer");
 
         // Determine whether to create or update
         var url = id ? '/categories/' + id : '/categories';
-
 
         // Perform AJAX request
         $.ajax({
@@ -78,14 +78,14 @@ console.log("rjoer");
         });
     });
 
-    $('.delete-category').on('click', function() {
+    $('#categoriesTable').on('click', '.delete-category', function() {
         var id = $(this).data('id');
 
         var button = $(this);
         if (confirm('Are you sure you want to ' + (button.text().trim() === 'Deactivate' ?
                 'deactivate' : 'activate') + ' this category?')) {
             $.ajax({
-                url: '/categories/' + id,
+                url: '/categories/delete/' + id,
                 type: 'post',
                 data: {
                     _token: $('meta[name="csrf-token"]').attr('content')
@@ -99,10 +99,11 @@ console.log("rjoer");
                 }
             });
         } else {
-
             return false;
         }
     });
+
+    
 
 
 

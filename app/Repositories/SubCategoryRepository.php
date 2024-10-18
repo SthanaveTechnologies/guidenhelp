@@ -6,7 +6,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 
 
-class CategoryRepository
+class SubCategoryRepository
 {
     public function getAll()
     {
@@ -20,7 +20,7 @@ class CategoryRepository
             DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') as created_at") // Format created_at directly
         )
         ->where('active', 1)
-        ->whereNull('parent_id')
+        ->whereNotNull('parent_id')
         ->get();
     }
 

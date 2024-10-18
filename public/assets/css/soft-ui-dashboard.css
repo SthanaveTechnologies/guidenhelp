@@ -3734,6 +3734,7 @@ fieldset:disabled .btn {
   /* margin-right: 20px; */
   box-shadow: 0 5px 10px -3px rgba(0, 0, 0, .23), 0 6px 10px -5px rgba(0, 0, 0, .25);
 }
+
 .btn-secondary {
   --bs-btn-color: #000;
   --bs-btn-bg: #8392AB;
@@ -26707,4 +26708,21 @@ pre[class*="language-"] {
   }
 }
 
+
+td{
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+.dataTables_paginate {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+.dataTables_info{
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+#editor {
+  height: 300px;
+}
 /*# sourceMappingURL=dashboard-free.css.map */

@@ -7,13 +7,13 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex">
-                        <h6>Categories Table</h6>
+                        <h6>Sub Categories Table</h6>
                         <a href="" id="btn-bar" class="ms-auto" data-bs-toggle="modal"
-                            data-bs-target="#modalCat">Add</a>
+                            data-bs-target="#modalSubCat">Add</a>
                     </div>
                     <div class="card-body px-0  pb-2">
                         <div class="table-responsive p-1">
-                            <table class="table align-items-center mb-0" id="categoriesTable">
+                            <table class="table align-items-center mb-0" id="subCategoriesTable">
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -47,23 +47,35 @@
 
         {{-- add/edit modal --}}
 
-        <div class="modal fade" id="modalCat" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="modalSubCat" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="h4 text-center">Create Category</h2>
+                        <h2 class="h4 text-center">Create Sub Category</h2>
                         <button type="button" class="btn-close" style="color: gray;" data-bs-dismiss="modal"
                             aria-label="Close">X</button>
                     </div>
                     <div class="modal-body px-md-5">
-                        {{-- <p class="text-center mb-4">One account. All of Themesberg working for you.</p> --}}
-                        <form id="categoryForm">
+                       
+                        <form id="subCategoryForm">
                             <!-- Form -->
                             <div class="form-group mb-4">
                                 <label for="title">Title</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control border-gray-300" placeholder="title"
                                         id="title" autofocus required>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label for="category">Select Category</label>
+                                <div class="input-group">
+                                    <select id="category" class="form-control border-gray-300" required>
+                                        <option value="" disabled selected>Select a category</option>
+                                        {{-- @foreach($categories as $category) <!-- Assuming you have categories available -->
+                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                        @endforeach --}}
+                                    </select>
                                 </div>
                             </div>
                             <!-- End of Form -->
@@ -91,5 +103,5 @@
         </div>
     </div>
 
-    <script src="{{ asset('assets/js/category.js') }}"></script>
+    <script src="{{ asset('assets/js/subcategory.js') }}"></script>
 @endsection
