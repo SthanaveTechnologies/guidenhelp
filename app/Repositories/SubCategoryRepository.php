@@ -19,7 +19,6 @@ class SubCategoryRepository
             'created_by', 
             DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') as created_at") // Format created_at directly
         )
-        ->where('active', 1)
         ->whereNotNull('parent_id')
         ->get();
     }
