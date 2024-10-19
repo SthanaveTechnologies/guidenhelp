@@ -27,11 +27,16 @@
                                             Status</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Parent Category</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Created By</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Created At</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,6 +69,19 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control border-gray-300" placeholder="title"
                                         id="title" autofocus required>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label for="category">Select Category</label>
+                                <div class="input-group">
+                                    <select id="categoryDropdown" class="form-control border-gray-300">
+                                        <option value="" disabled selected>Select a category</option>
+                                        @foreach ($mainCatList as $category)
+                                            <option value="{{ $category->id }}" id="parent_id" name="parent_id">
+                                                {{ $category->title }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <!-- End of Form -->

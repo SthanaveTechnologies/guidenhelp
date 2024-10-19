@@ -11,6 +11,21 @@ class CategoryRepository
     public function getAll()
     {
         return Category::select(
+            'categories.id', 
+            'categories.title as category_title', 
+            'categories.description', 
+            'categories.parent_id',
+            'parent.title as parent_title', 
+            'categories.active',
+            'categories.created_by',
+            DB::raw("DATE_FORMAT(categories.created_at, '%Y-%m-%d %H:%i:%s') as created_at") 
+        )
+        ->leftJoin('categories as parent', 'categories.parent_id', '=', 'parent.id') 
+        ->get();
+    }
+
+    public function Categories(){
+        return Category::select(
             'id', 
             'title', 
             'description', 
@@ -50,4 +65,7 @@ class CategoryRepository
     
             return $category;
     }
+
+
+
 }
