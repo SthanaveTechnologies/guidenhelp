@@ -3,12 +3,39 @@
 namespace App\Repositories;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
+
 
 class CategoryRepository
 {
     public function getAll()
     {
-        return Category::all();
+        return Category::select(
+            'categories.id', 
+            'categories.title as category_title', 
+            'categories.description', 
+            'categories.parent_id',
+            'parent.title as parent_title', 
+            'categories.active',
+            'categories.created_by',
+            DB::raw("DATE_FORMAT(categories.created_at, '%Y-%m-%d %H:%i:%s') as created_at") 
+        )
+        ->leftJoin('categories as parent', 'categories.parent_id', '=', 'parent.id') 
+        ->get();
+    }
+
+    public function Categories(){
+        return Category::select(
+            'id', 
+            'title', 
+            'description', 
+            'parent_id', 
+            'active', 
+            'created_by', 
+            DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') as created_at") // Format created_at directly
+        )
+        ->whereNull('parent_id')
+        ->get();
     }
 
     public function findById($id)
@@ -18,6 +45,7 @@ class CategoryRepository
 
     public function create(array $data)
     {
+       
         return Category::create($data);
     }
 
@@ -32,6 +60,12 @@ class CategoryRepository
     public function delete($id)
     {
         $category = $this->findById($id);
-        return $category->delete();
+            $category->active = !$category->active; 
+            $category->save();
+    
+            return $category;
     }
+
+
+
 }
