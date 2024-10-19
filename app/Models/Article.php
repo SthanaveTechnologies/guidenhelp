@@ -7,11 +7,10 @@ use Illuminate\Support\Str;
 
 class Article extends Model
 {
-    
     protected $keyType = 'string';
+
     public $incrementing = false;
 
-   
     protected static function boot()
     {
         parent::boot();
@@ -21,13 +20,17 @@ class Article extends Model
         });
     }
 
-    
     protected $fillable = [
         'title',
         'description',
         'short_description',
         'cat_id',
-        'date',
+        'active',
         'created_by',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'cat_id');
+    }
 }

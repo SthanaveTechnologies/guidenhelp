@@ -15,15 +15,15 @@ return new class extends Migration
             $table->uuid('id')->primary(); // Set UUID as the primary key
             $table->string('title');
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->char('parent_id', 36)->nullable();
             $table->boolean('active')->default(true);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->timestamps();
-        
+
             // Foreign key constraint
             $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
         });
-        
+
     }
 
     /**

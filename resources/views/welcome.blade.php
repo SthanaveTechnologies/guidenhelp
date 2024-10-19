@@ -1,31 +1,39 @@
+<!-- resources/views/quill-editor.blade.php -->
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CKEditor 5 - Quick start ZIP</title>
-        <link rel="stylesheet" href="../../assets/vendor/ckeditor5.css">
-        <style>
-            .main-container {
-                width: 795px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        </style>
-    </head>
-    <body>
-      <textarea name="content" id="editor"></textarea>
 
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="{{ asset('node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quill Editor Example</title>
+    <!-- Quill CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
 
-<script>
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
+<body>
+    <div class="container mt-5">
+        <h2>Quill Editor Integration</h2>
+        <form action="/submit-article" method="POST">
+            @csrf
+            <!-- Quill Editor for Description -->
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <div id="quillEditor" style="height: 200px;"></div>
+            </div>
 
-    </body>
+            <!-- Hidden input field to store Quill content -->
+            <input type="hidden" name="description" id="description">
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </form>
+    </div>
+
+    <!-- Quill JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <!-- Your custom Quill JavaScript -->
+    <script src="{{ asset('assets/js/quill.js') }}"></script>
+</body>
+
 </html>

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Repositories\CategoryRepository;
@@ -17,7 +18,8 @@ class CategoryService
         return $this->categoryRepository->getAll();
     }
 
-    public function Categories(){
+    public function Categories()
+    {
         return $this->categoryRepository->Categories();
     }
 
@@ -39,5 +41,13 @@ class CategoryService
     public function deleteCategory($id)
     {
         return $this->categoryRepository->delete($id);
+    }
+
+    // api functions
+
+    public function getCategoriAndSubCat()
+    {
+
+        return $this->categoryRepository->getCategoriAndSubCat();
     }
 }
