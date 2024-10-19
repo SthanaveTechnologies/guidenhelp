@@ -61,7 +61,6 @@
                             aria-label="Close">X</button>
                     </div>
                     <div class="modal-body px-md-5">
-                        {{-- <p class="text-center mb-4">One account. All of Themesberg working for you.</p> --}}
                         <form id="categoryForm">
                             <!-- Form -->
                             <div class="form-group mb-4">
